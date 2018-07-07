@@ -11,63 +11,72 @@ import java.util.LinkedList;
 import java.util.TreeSet;
 
 public class SudokuNode {
-    private int board[][];
+    private int[][] board;
     private int size;
 
     public SudokuNode(int s) {
-        board = new int[size][size];
         size = s;
+        board = new int[size][size];
     }
 
     private SudokuNode(int b[][], int x, int y, int v) {
-        board = b;
         size = b.length;
-        board[x][y] = v;
+        board = new int[size][size];
+        for(int i = 0; i < size; i++) {
+            board[i] = b[i].clone();
+        }
+        board[y][x] = v;
     }
 
-    public void addConstraint(int x, int y, int v) {
+    public void addConstraint(int x, int y, int v) throws NumberFormatException {
         if (x >= size || y >= size) {
-            throw new ArrayIndexOutOfBoundsException("x or y coord is not within sudoku grid.");
+            throw new NumberFormatException("x or y coord is not within sudoku grid.");
         }
         if (v < 1 || v > size) {
             throw new NumberFormatException("v was not a valid sudoku number.");
         }
 
-        board[x][y] = v;
+        board[y][x] = v;
     }
 
-    public SudokuNode[] getChildren() {
+    public LinkedList<SudokuNode> getChildren() {
         LinkedList<SudokuNode> children = new LinkedList<>();
         // find next spot
         int x = -1;
         int y = -1;
         for (int i = 0; i < size; i++) {
-            int j = checkRow(i);
-            if (j != -1) {
-                x = i;
-                y = j;
+            boolean change = false;
+            for (int j = 0; j < size; j++) {
+                if (board[i][j] == 0) {
+                    y = i;
+                    x = j;
+                    change = true;
+                    break;
+                }
+            }
+            if (change) {
                 break;
             }
         }
 
         // get already used values
         HashSet<Integer> usedValues = new HashSet<>();
-        // same column
+        // same row
         for(int i = 0; i < size; i++) {
             if (i == y) {
                 continue;
             }
-            if (board[x][i] != 0) {
-                usedValues.add(board[x][i]);
+            if (board[i][x] != 0) {
+                usedValues.add(board[i][x]);
             }
         }
-        //same row
+        //same column
         for(int i = 0; i < size; i++) {
             if (i == x) {
                 continue;
             }
-            if (board[i][y] != 0) {
-                usedValues.add(board[i][y]);
+            if (board[y][i] != 0) {
+                usedValues.add(board[y][i]);
             }
         }
         // same square
@@ -96,8 +105,8 @@ public class SudokuNode {
         }
         for (int i = xbounds[0]; i < xbounds[1]; i++) {
             for (int j = ybounds[0]; j < ybounds[1]; j++) {
-                if (board[i][j] != 0) {
-                    usedValues.add(board[i][j]);
+                if (board[j][i] != 0) {
+                    usedValues.add(board[j][i]);
                 }
             }
         }
@@ -113,7 +122,7 @@ public class SudokuNode {
         for (int i: sortedPossibles) {
             children.add(new SudokuNode(board, x, y, i));
         }
-        return children.toArray(new SudokuNode[children.size()]);
+        return children;
     }
 
     private int checkRow(int r) {
@@ -123,5 +132,25 @@ public class SudokuNode {
             }
         }
         return -1;
+    }
+
+    public boolean testComplete() {
+        for (int i = 0; i < size; i++) {
+            for (int j = 0; j < size; j++) {
+                if (board[i][j] == 0) {
+                    return false;
+                }
+            }
+        }
+        return true;
+    }
+
+    public void print() {
+        for (int i = 0; i < size; i++) {
+            for (int j = 0; j < size; j++) {
+                System.out.print(board[i][j] + " ");
+            }
+            System.out.print("\n");
+        }
     }
 }
