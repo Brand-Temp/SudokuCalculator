@@ -1,11 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="b696c160-2703-4894-8ca7-a81e128ea95c" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/SudokuCalculator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/SudokuCalculator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/SudokuNode.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/SudokuNode.java" afterDir="false" />
-    </list>
+    <list default="true" id="b696c160-2703-4894-8ca7-a81e128ea95c" name="Default" comment="" />
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -84,7 +80,7 @@
     <detection-done>true</detection-done>
     <sorting>DEFINITION_ORDER</sorting>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
+  <component name="ProjectFrameBounds" extendedState="7">
     <option name="x" value="-224" />
     <option name="y" value="-8" />
     <option name="width" value="1936" />
@@ -176,7 +172,7 @@
     <configuration name="Main" type="Application" factoryName="Application" temporary="true">
       <option name="MAIN_CLASS_NAME" value="SudokuCalculator" />
       <module name="SudokuCalculator" />
-      <option name="PROGRAM_PARAMETERS" value="out/production/SudokuCalculator/regularHarder.txt" />
+      <option name="PROGRAM_PARAMETERS" value="out/production/SudokuCalculator/verticlecountdown.txt" />
       <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />
       <RunnerSettings RunnerId="Run" />
       <ConfigurationWrapper RunnerId="Run" />
@@ -214,12 +210,12 @@
       <updated>1530675547117</updated>
       <workItem from="1530675550949" duration="13345000" />
       <workItem from="1530876674569" duration="898000" />
-      <workItem from="1530878017774" duration="5002000" />
+      <workItem from="1530878017774" duration="5004000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="19245000" />
+    <option name="totallyTimeSpent" value="19247000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
